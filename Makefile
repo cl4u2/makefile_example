@@ -1,25 +1,28 @@
 CC=gcc
-CFLAGS=-O2
+CFLAGS=-O2 
+LDFLAGS=-lm
 
-all: main do_circle do_circumference
+#i commenti vengono ignorati
 
-main: pi.o circle.o circumference.o main.c
-	$(CC) $(CFLAGS) pi.o circle.o circumference.o main.c -o main
+all: do_circumference do_circle
 
-do_circle: pi.o circle.o do_circle.c
-	$(CC) $(CFLAGS) pi.o circle.o do_circle.c -o do_circle
+do_circumference: circumference.o pi.o do_circumference.c
+	$(CC) $(CFLAGS) circumference.o pi.o do_circumference.c -o do_circumference
 
-do_circumference: pi.o circumference.o do_circumference.c
-	$(CC) $(CFLAGS) pi.o circumference.o do_circumference.c -o do_circumference
+circumference.o: circumference.c circumference.h 
+	$(CC) $(CFLAGS) -c circumference.c -o circumference.o
 
-circle.o: pi.h circle.c circle.h
-	$(CC) $(CFLAGS) -c circle.c
+do_circle: circle.o pi.o do_circle.c
+	$(CC) $(CFLAGS) $(LDFLAGS) circle.o pi.o do_circle.c -o do_circle
 
-circumference.o: pi.h circumference.c circumference.h
-	$(CC) $(CFLAGS) -c circumference.c
+circle.o: circle.c circle.h
+	$(CC) $(CFLAGS) -c circle.c -o circle.o
 
 pi.o: pi.c pi.h
-	$(CC) $(CFLAGS) -c pi.c
+	$(CC) $(CFLAGS) -c pi.c -o pi.o
+
+debug_circumference: circumference.o pi.o do_circumference.c
+	$(CC) $(CFLAGS) -DNDEBUG circumference.o pi.o do_circumference.c -o do_circumference
 
 clean:
-	rm *.o main do_circle do_circumference
+	rm *.o do_circle do_circumference

@@ -1,8 +1,7 @@
 #include "pi.h"
-#include "circumference.h"
 
-float circumference(float ray) {
-    float pi = getPi();
-    return 2 * pi * ray;
+float circumference(float r) {
+    float pi = get_pi();
+    return 2*pi*r;
 }
 
