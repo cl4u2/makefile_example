@@ -1,25 +1,26 @@
 CC=gcc
-CFLAGS=-O2
+CFLAGS=-g
 
-all: main do_circle do_circumference
+all: main do_circumference do_circle
 
-main: pi.o circle.o circumference.o main.c
-	$(CC) $(CFLAGS) pi.o circle.o circumference.o main.c -o main
+main: main.c circle.o circumference.o pi.o circle.h circumference.h
+	$(CC) $(CFLAGS) main.c circle.o circumference.o pi.o -o main
 
-do_circle: pi.o circle.o do_circle.c
-	$(CC) $(CFLAGS) pi.o circle.o do_circle.c -o do_circle
+do_circumference: do_circumference.c circumference.o pi.o circumference.h
+	$(CC) $(CFLAGS) do_circumference.c circumference.o pi.o -o do_circumference
 
-do_circumference: pi.o circumference.o do_circumference.c
-	$(CC) $(CFLAGS) pi.o circumference.o do_circumference.c -o do_circumference
+do_circle: do_circle.c circle.o pi.o circle.h
+	$(CC) $(CFLAGS) do_circle.c circle.o pi.o -o do_circle
 
-circle.o: pi.h circle.c circle.h
+circumference.o: circumference.c circumference.h pi.h
+	$(CC) $(CFLAGS)	-c circumference.c
+
+circle.o: circle.c circle.h pi.h
 	$(CC) $(CFLAGS) -c circle.c
-
-circumference.o: pi.h circumference.c circumference.h
-	$(CC) $(CFLAGS) -c circumference.c
 
 pi.o: pi.c pi.h
 	$(CC) $(CFLAGS) -c pi.c
 
 clean:
-	rm *.o main do_circle do_circumference
+	rm -f *.o main do_circle do_circumference
+

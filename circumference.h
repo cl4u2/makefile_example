@@ -1,6 +1,7 @@
-#ifndef _CIRCUMFERENCE_H
-#define _CIRCUMFERENCE_H
+#ifndef CIRCUMFERENCE_H
+#define CIRCUMFERENCE_H
 
 float circumference(float ray);
 
 #endif
+

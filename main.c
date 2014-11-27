@@ -1,15 +1,19 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include "circle.h"
 #include "circumference.h"
 
 int main(int argc, char **argv) {
-    float r = 3.0;
-    float res1, res2;
+    float ray, c1, c2;
 
-    res1 = circleArea(r);
-    res2 = circumference(r);
+    ray = atof(argv[1]);
 
-    printf("%.2f %.2f\n", res1, res2);
+    c1 = circle(ray);
+    c2 = circumference(ray);
+
+    printf("L'area del cerchio di raggio %.2f e' %.2f\n", ray, c1);
+    printf("La circonferenza del cerchio di raggio %.2f e' %.2f\n", ray, c2);
+
+    return 0;
 }
-
 

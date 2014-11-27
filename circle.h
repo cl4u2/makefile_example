@@ -1,6 +1,6 @@
-#ifndef _CIRCLE_H
-#define _CIRCLE_H
+#ifndef CIRCLE_H
+#define CIRCLE_H
 
-float circleArea(float ray);
+float circle(float ray);
 
 #endif

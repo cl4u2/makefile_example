@@ -1,15 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "circle.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 int main(int argc, char **argv) {
-    float ray, a;
-    if(argc < 2) {
-        printf("Usage: %s <ray>\n", argv[0]);
-        exit(1);
-    }
+    float ray, c1;
+
     ray = atof(argv[1]);
-    a = circleArea(ray);
-    printf("Circle Area: %.2f\n", a);
+
+    c1 = circle(ray);
+
+    printf("L'area del cerchio di raggio %.2f e' %.2f\n", ray, c1);
+
     return 0;
 }
