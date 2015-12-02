@@ -1,15 +1,14 @@
-#include <stdio.h>
 #include "circle.h"
 #include "circumference.h"
+#include <stdio.h>
 
 int main(int argc, char **argv) {
-    float r = 3.0;
-    float res1, res2;
+    float r = 12.7;
+    float A = circle_area(r);
+    float C = circle_circumference(r);
 
-    res1 = circleArea(r);
-    res2 = circumference(r);
+    printf("r = %.2f ==> A = %.2f, C = %.2f\n", r, A, C);
 
-    printf("%.2f %.2f\n", res1, res2);
+    return 0;
 }
-
 

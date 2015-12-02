@@ -1,7 +1,9 @@
-#ifndef _GET_PI
-#define _GET_PI
+#ifndef _PI_H
+#define _PI_H
 
-float getPi();
+//return PI
+
+float pi();
 
 #endif
 

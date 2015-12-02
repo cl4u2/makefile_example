@@ -1,15 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "circumference.h"
+#include <stdio.h>
 
 int main(int argc, char **argv) {
-    float ray, c;
-    if(argc < 2) {
-        printf("Usage: %s <ray>\n", argv[0]);
-        exit(1);
-    }
-    ray = atof(argv[1]);
-    c = circumference(ray);
-    printf("Circumference: %.2f\n", c);
+    float r = 12.0;
+    float C = circle_circumference(r);
+    printf("r = %.2f ==> C = %.2f\n", r, C);
     return 0;
 }
+
